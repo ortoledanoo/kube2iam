@@ -14,10 +14,6 @@ spec:
       labels:
         name: kube2iam
     spec:
-      tolerations:
-        - key: kube2iam
-          value: kube2iam
-          effect: NoSchedule
       serviceAccountName: kube2iam
       hostNetwork: true
       containers:

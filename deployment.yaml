@@ -18,10 +18,6 @@ spec:
       annotations:
         iam.amazonaws.com/role: arn:aws:iam::585768175989:role/aws-cli-kube2iam
     spec:
-      tolerations:
-        - key: kube2iam
-          value: kube2iam
-          effect: NoSchedule
       containers:
       - name: aws-iam-tester
         image: amazon/aws-cli

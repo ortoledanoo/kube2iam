@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-iam-tester
+  labels:
+    app: aws-iam-tester
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: aws-iam-tester
+  template:
+    metadata:
+      labels:
+        app: aws-iam-tester
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::585768175989:role/aws-cli-kube2iam
+    spec:
+      tolerations:
+        - key: kube2iam
+          value: kube2iam
+          effect: NoSchedule
+      containers:
+      - name: aws-iam-tester
+        image: amazon/aws-cli
+        imagePullPolicy: Always
+        command:
+          - /bin/sleep
+        args:
+          - "3600"
+        env:
+          - name: AWS_DEFAULT_REGION
+            value: il-central-1

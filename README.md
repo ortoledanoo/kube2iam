@@ -19,7 +19,7 @@ Kube2IAM is a daemon that provides IAM credentials to containers running inside 
 
 ### 1. EC2 Instance Role (for kube2iam daemon)
 
-The EC2 instances running your Kubernetes cluster need an IAM role with the following policy:
+The EC2 instances (Worker Nodes) running your Kubernetes cluster need an IAM role with the following policy:
 
 ```json
 {
@@ -33,7 +33,7 @@ The EC2 instances running your Kubernetes cluster need an IAM role with the foll
     ]
 }
 ```
-**Note:** Replace `arn:aws:iam::585768175989:role/aws-cli-kube2iam` with any role you want your pods to assume.
+**Note:** Replace or add to `arn:aws:iam::585768175989:role/aws-cli-kube2iam` with any role you want your pods to assume.
 
 **Trust Policy for EC2 Instance Role:**
 ```json

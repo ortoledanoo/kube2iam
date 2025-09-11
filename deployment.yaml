@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: aws-iam-tester
-        image: amazon/aws-cli
+        image: amazon/aws-cli # Set downloaded image tag
         imagePullPolicy: Always
         command:
           - /bin/sleep

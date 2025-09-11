@@ -17,7 +17,7 @@ spec:
       serviceAccountName: kube2iam
       hostNetwork: true
       containers:
-        - image: jtblin/kube2iam:latest
+        - image: jtblin/kube2iam:latest # Set to downloaded image tag (should use IMDSv2 Supported Version)
           imagePullPolicy: Always
           name: kube2iam
           args:
@@ -25,7 +25,7 @@ spec:
             - "--auto-discover-base-arn"
             - "--iptables=true"
             - "--host-ip=$(HOST_IP)"
-            - "--host-interface=cni0"
+            - "--host-interface=cni0" # Change to cluster CNI
             - "--use-regional-sts-endpoint"
             - "--auto-discover-default-role"
             - "--log-level=info"

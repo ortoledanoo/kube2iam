@@ -25,7 +25,7 @@ spec:
             - "--auto-discover-base-arn"
             - "--iptables=true"
             - "--host-ip=$(HOST_IP)"
-            - "--host-interface=ens5" # Change to cluster CNI
+            - "--host-interface=cni0" # Change to cluster CNI (on my its works with ens5)
             - "--use-regional-sts-endpoint"
             - "--auto-discover-default-role"
             - "--log-level=info"

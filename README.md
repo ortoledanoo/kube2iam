@@ -29,10 +29,18 @@ The EC2 instances (Worker Nodes) running your Kubernetes cluster need an IAM rol
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
             "Resource": "arn:aws:iam::585768175989:role/aws-cli-kube2iam" 
+        },
+        {
+            "Effect": "Allow",
+            "Action": "ec2:DescribeRegions",
+            "Resource": "*"
         }
     ]
 }
 ```
+
+**Note:** The `ec2:DescribeRegions` permission is required for kube2iam to discover available AWS regions when making API calls.
+
 **Note:** Replace or add to `arn:aws:iam::585768175989:role/aws-cli-kube2iam` with any role you want your pods to assume.
 
 **Trust Policy for EC2 Instance Role:**

@@ -15,6 +15,15 @@ Kube2IAM is a daemon that provides IAM credentials to containers running inside 
 - AWS CLI configured on your local machine
 - EC2 instances configured with IMDSv2 (Token Required, http-hop-limit=1)
 
+## Host Interface Configuration
+
+When using IMDSv2 with hop limit = 1, the choice of `--host-interface` is critical:
+
+- **`ens5`** (Physical interface) - ✅ **Recommended**: Direct path to IMDS (1 hop)
+- **`cni0`** (Bridge interface) - ❌ **Avoid**: Adds bridge layer (2 hops, may fail)
+
+**Why this matters:** With hop limit = 1, traffic through `cni0` bridge can exceed the limit and block IMDS access. Use `ens5` for reliable operation.
+
 ## Required IAM Roles
 
 ### 1. EC2 Instance Role (for kube2iam daemon)
